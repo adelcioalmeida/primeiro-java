@@ -1,14 +1,22 @@
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args){
 
-        int idade =  18;
+        Scanner teclado = new Scanner(System.in);
 
-        if (idade >= 18) {
-            System.out.println("Você é maior de idade");
+        System.out.print("Digite sua idade: ");
+        int idade = teclado.nextInt();
+
+        if (idade>= 18) {
+            System.out.println("Você ée maior de idade");
+
         } else {
             System.out.println("Você é menor de idade");
+
         }
 
+        teclado.close();
     }
 }
