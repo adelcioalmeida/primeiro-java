@@ -4,11 +4,63 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int[] idades = {18, 25, 30, 15, 40};
+        Scanner entrada = new Scanner(System.in);
 
-        for (int idade : idades) {
-            System.out.println("Idade: " + idade);
+        int[] idades = new int[5];
+        int quantidade = 0;
+        int opcao = -1;
+
+        while (opcao != 0) {
+            mostrarMenu();
+            opcao = entrada.nextInt();
+
+            if (opcao == 1) {
+                if (quantidade < idades.length) {
+                    System.out.print("Digite uma idade: ");
+                    int idade = entrada.nextInt();
+
+                    idades[quantidade] = idade;
+                    quantidade++;
+
+                    System.out.println("Idade salva!");
+                } else {
+                    System.out.println("lista cheia! (maximo 5 idades)");
+                }
+
+            } else if (opcao == 2) {
+                listarIdades(idades, quantidade);
+
+            } else if (opcao == 0) {
+                System.out.println("Saindo...");
+
+            } else {
+                System.out.println("Opção invalida.");
+
+            }
+            System.out.println();
+        }
+
+        entrada.close();
+    }
+
+    static void mostrarMenu() {
+        System.out.println("MENU");
+        System.out.println("1 - Adicionar idade");
+        System.out.println("2 - Listar idades");
+        System.out.println("0 - Sair");
+        System.out.print("Escolha: ");
+    }
+
+    static void listarIdades(int[] idades, int quantidade) {
+        if (quantidade == 0) {
+            System.out.println("Nenhuma idade cadastrada.");
+            return;
+        }
+        System.out.println("Idades cadastradas:");
+        for (int i = 0; i < quantidade; i++) {
+            System.out.println("- " + idades[i]);
         }
 
     }
+
 }
