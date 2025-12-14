@@ -71,7 +71,7 @@ public class Main {
 
             System.out.println("Pessoas cadastradas:");
             for (Pessoa p : pessoas) {
-                System.out.println("- " + p.getNome() + " | idade: " + p.getIdade());
+                System.out.println("- " + p);
             }
         }
 
