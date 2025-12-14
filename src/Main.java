@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -5,9 +6,8 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner entrada = new Scanner(System.in);
+        ArrayList<Integer> idades = new ArrayList<>();
 
-        int[] idades = new int[5];
-        int quantidade = 0;
         int opcao = -1;
 
         while (opcao != 0) {
@@ -15,27 +15,21 @@ public class Main {
             opcao = entrada.nextInt();
 
             if (opcao == 1) {
-                if (quantidade < idades.length) {
-                    System.out.print("Digite uma idade valida (maior que 0): ");
+                System.out.print("Digite uma idade valida (maior que 0): ");
                     int idade = entrada.nextInt();
 
                     if (idade > 0) {
-                        idades[quantidade] = idade;
-                        quantidade++;
-
+                        idades.add(idade);
                         System.out.println("Idade salva!");
                     } else {
-                        System.out.println("Idade invalida. Não foi salva.");
+                        System.out.println("Idade invalida.");
                     }
-                }else {
-                    System.out.println("Lista cheia! (maximo 5 idades)");
-                }
 
                 } else if (opcao == 2) {
-                    listarIdades(idades, quantidade);
+                    listarIdades(idades);
 
                 } else if (opcao == 3) {
-                    mostrarMedia(idades, quantidade);
+                    mostrarMedia(idades);
 
                 } else if (opcao == 0) {
                     System.out.println("Saindo...");
@@ -59,29 +53,29 @@ public class Main {
             System.out.print("Escolha: ");
         }
 
-        static void listarIdades ( int[] idades, int quantidade){
-            if (quantidade == 0) {
+        static void listarIdades ( ArrayList<Integer> idades){
+            if (idades.isEmpty()) {
                 System.out.println("Nenhuma idade cadastrada.");
                 return;
             }
             System.out.println("Idades cadastradas:");
-            for (int i = 0; i < quantidade; i++) {
-                System.out.println("- " + idades[i]);
+            for (int idade : idades) {
+                System.out.println("- " + idade);
             }
 
         }
-        static void mostrarMedia ( int[] idades, int quantidade){
-            if (quantidade == 0) {
+        static void mostrarMedia (ArrayList<Integer> idades ){
+            if (idades.isEmpty()) {
                 System.out.println("Nenhuma idade cadastrada.");
                 return;
             }
 
             int soma = 0;
-            for (int i = 0; i < quantidade; i++) {
-                soma += idades[i];
+            for (int idade : idades) {
+                soma += idade;
             }
 
-            double media = (double) soma / quantidade;
+            double media = (double) soma / idades.size();
             System.out.println("Média das idades: " + media);
         }
     }
