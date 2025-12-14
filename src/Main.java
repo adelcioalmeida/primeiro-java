@@ -5,19 +5,27 @@ public class Main {
     public static void main(String[] args){
 
         Scanner entrada = new Scanner(System.in);
-        int idade = -1;
+        int opcao  = -1;
 
-        while (idade != 0) {
-            System.out.println("Digite sua idade (0 para sair): ");
-            idade = entrada.nextInt();
+        while (opcao != 0) {
+            System.out.println("MENU");
+            System.out.println("1 - Dizer olá");
+            System.out.println("2 - Mostrar idade");
+            System.out.println("Escolha uma opção: ");
 
+            opcao = entrada.nextInt();
 
-            if (idade > 0) {
-                System.out.println("idade digitada: " + idade );
+            if (opcao == 1) {
+                System.out.println("Olá, Adelcio!");
+            } else if (opcao == 2) {
+                System.out.println("Você tem 35 anos.");
+            } else if (opcao == 0) {
+                System.out.println("Saindo do programa...");
+            } else {
+                System.out.println("Opção invalida.");
             }
+            System.out.println();
         }
-
-        System.out.println("Programa finalizado.");
 
         entrada.close();
     }
