@@ -54,11 +54,12 @@ public class Main {
             int idade = entrada.nextInt();
             entrada.nextLine();
 
-            if (idade > 0 && !nome.isBlank()) {
+            try{
                 pessoas.add(new Pessoa(nome, idade));
                 System.out.println("Pessoa salva!");
-            } else {
-                System.out.println("Dados inválidos. Não fo i salvo.");
+
+            } catch (IllegalArgumentException e){
+                System.out.println("Dados inválidos: " + e.getMessage());
             }
 
         }
