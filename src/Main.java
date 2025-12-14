@@ -70,7 +70,7 @@ public class Main {
 
             System.out.println("Pessoas cadastradas:");
             for (Pessoa p : pessoas) {
-                System.out.println("- " + p.nome + " | idade: " + p.idade);
+                System.out.println("- " + p.getNome() + " | idade: " + p.getIdade());
             }
         }
 
@@ -82,7 +82,7 @@ public class Main {
             }
                 int soma = 0;
             for (Pessoa p : pessoas) {
-                soma += p.idade;
+                soma += p.getIdade();
             }
 
             double media = (double) soma / pessoas.size();
