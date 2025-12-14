@@ -6,30 +6,23 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner entrada = new Scanner(System.in);
-        ArrayList<Integer> idades = new ArrayList<>();
+        ArrayList<Pessoa> pessoas = new ArrayList<>();
 
         int opcao = -1;
 
         while (opcao != 0) {
             mostrarMenu();
             opcao = entrada.nextInt();
+            entrada.nextLine();
 
             if (opcao == 1) {
-                System.out.print("Digite uma idade valida (maior que 0): ");
-                    int idade = entrada.nextInt();
-
-                    if (idade > 0) {
-                        idades.add(idade);
-                        System.out.println("Idade salva!");
-                    } else {
-                        System.out.println("Idade invalida.");
-                    }
+                adicionarPessoa(entrada,pessoas);
 
                 } else if (opcao == 2) {
-                    listarIdades(idades);
+                    listarPessoas(pessoas);
 
                 } else if (opcao == 3) {
-                    mostrarMedia(idades);
+                    mostrarMediaIdades(pessoas);
 
                 } else if (opcao == 0) {
                     System.out.println("Saindo...");
@@ -46,36 +39,53 @@ public class Main {
 
         static void mostrarMenu () {
             System.out.println("MENU");
-            System.out.println("1 - Adicionar idade");
-            System.out.println("2 - Listar idades");
-            System.out.println("3- Mostrar média");
+            System.out.println("1 - Adicionar pessoa");
+            System.out.println("2 - Listar pessoas");
+            System.out.println("3- Mostrar média das idades");
             System.out.println("0 - Sair");
             System.out.print("Escolha: ");
         }
 
-        static void listarIdades ( ArrayList<Integer> idades){
-            if (idades.isEmpty()) {
-                System.out.println("Nenhuma idade cadastrada.");
-                return;
-            }
-            System.out.println("Idades cadastradas:");
-            for (int idade : idades) {
-                System.out.println("- " + idade);
+        static void adicionarPessoa ( Scanner entrada, ArrayList<Pessoa> pessoas){
+            System.out.print("Digite o nome");
+            String nome = entrada.nextLine();
+
+            System.out.print("Digite a idade (maior que 0):");
+            int idade = entrada.nextInt();
+            entrada.nextLine();
+
+            if (idade > 0 && !nome.isBlank()) {
+                pessoas.add(new Pessoa(nome, idade));
+                System.out.println("Pessoa salva!");
+            } else {
+                System.out.println("Dados inválidos. Não fo i salvo.");
             }
 
         }
-        static void mostrarMedia (ArrayList<Integer> idades ){
-            if (idades.isEmpty()) {
-                System.out.println("Nenhuma idade cadastrada.");
+        static void listarPessoas(ArrayList<Pessoa> pessoas) {
+            if (pessoas.isEmpty()) {
+                System.out.println("Nenhuma pessoa cadastrada.");
                 return;
             }
 
-            int soma = 0;
-            for (int idade : idades) {
-                soma += idade;
+            System.out.println("Pessoas cadastradas:");
+            for (Pessoa p : pessoas) {
+                System.out.println("- " + p.nome + " | idade: " + p.idade);
+            }
+        }
+
+        static void mostrarMediaIdades(ArrayList<Pessoa> pessoas){
+            if (pessoas.isEmpty()) {
+                System.out.println("Nenhuma pessoa cadastrada.");
+                return;
+
+            }
+                int soma = 0;
+            for (Pessoa p : pessoas) {
+                soma += p.idade;
             }
 
-            double media = (double) soma / idades.size();
+            double media = (double) soma / pessoas.size();
             System.out.println("Média das idades: " + media);
         }
     }
