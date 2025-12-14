@@ -30,6 +30,9 @@ public class Main {
             } else if (opcao == 2) {
                 listarIdades(idades, quantidade);
 
+            } else if (opcao == 3) {
+                mostrarMedia(idades, quantidade);
+
             } else if (opcao == 0) {
                 System.out.println("Saindo...");
 
@@ -47,6 +50,7 @@ public class Main {
         System.out.println("MENU");
         System.out.println("1 - Adicionar idade");
         System.out.println("2 - Listar idades");
+        System.out.println("3- Mostrar média");
         System.out.println("0 - Sair");
         System.out.print("Escolha: ");
     }
@@ -61,6 +65,20 @@ public class Main {
             System.out.println("- " + idades[i]);
         }
 
+    }
+    static void mostrarMedia(int[] idades, int quantidade) {
+        if (quantidade == 0) {
+            System.out.println("Nenhuma idade cadastrada.");
+            return;
+        }
+
+        int soma = 0;
+        for (int i = 0; i < quantidade; i++) {
+            soma += idades[i];
+        }
+
+        double media = (double) soma / quantidade;
+        System.out.println("Média das idades: " + media);
     }
 
 }
