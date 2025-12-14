@@ -2,23 +2,19 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         Scanner entrada = new Scanner(System.in);
-        int opcao  = -1;
+        int opcao = -1;
 
         while (opcao != 0) {
-            System.out.println("MENU");
-            System.out.println("1 - Dizer olá");
-            System.out.println("2 - Mostrar idade");
-            System.out.println("Escolha uma opção: ");
-
+            mostrarMenu();
             opcao = entrada.nextInt();
 
             if (opcao == 1) {
-                System.out.println("Olá, Adelcio!");
+                dizerOla();
             } else if (opcao == 2) {
-                System.out.println("Você tem 35 anos.");
+                mostrarIdade();
             } else if (opcao == 0) {
                 System.out.println("Saindo do programa...");
             } else {
@@ -28,5 +24,21 @@ public class Main {
         }
 
         entrada.close();
+    }
+
+static void mostrarMenu() {
+    System.out.println("MENU");
+    System.out.println("1 - Dizer Olá");
+    System.out.println("2 - Mostrar Idade");
+    System.out.println("0 - Sair");
+    System.out.print("Escolha uma opção:");
+}
+
+static void dizerOla() {
+    System.out.println("Olá, Adelcio!");
+}
+static void mostrarIdade() {
+    System.out.println("Você tem 35 anos.");
+
     }
 }
