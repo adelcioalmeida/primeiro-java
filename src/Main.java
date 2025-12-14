@@ -4,19 +4,21 @@ public class Main {
 
     public static void main(String[] args){
 
-        Scanner teclado = new Scanner(System.in);
+        Scanner entrada = new Scanner(System.in);
+        int idade = -1;
 
-        System.out.print("Digite sua idade: ");
-        int idade = teclado.nextInt();
+        while (idade != 0) {
+            System.out.println("Digite sua idade (0 para sair): ");
+            idade = entrada.nextInt();
 
-        if (idade>= 18) {
-            System.out.println("Você ée maior de idade");
 
-        } else {
-            System.out.println("Você é menor de idade");
-
+            if (idade > 0) {
+                System.out.println("idade digitada: " + idade );
+            }
         }
 
-        teclado.close();
+        System.out.println("Programa finalizado.");
+
+        entrada.close();
     }
 }
