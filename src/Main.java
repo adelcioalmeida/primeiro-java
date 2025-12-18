@@ -27,6 +27,9 @@ public class Main {
             } else if (opcao == 4) {
                 editarPessoa(entrada, pessoas);
 
+            } else if (opcao == 5) {
+                removerPessoa(entrada, pessoas);
+
             } else if (opcao == 0) {
                 System.out.println("Saindo...");
 
@@ -46,6 +49,7 @@ public class Main {
         System.out.println("2 - Listar pessoas");
         System.out.println("3 - Mostrar média das idades");
         System.out.println("4 - Editar pessoa");
+        System.out.println("5 - Remover pessoa");
         System.out.println("0 - Sair");
         System.out.print("Escolha: ");
     }
@@ -130,8 +134,35 @@ public class Main {
             System.out.println("Pessoa atualizada!");
         } catch (IllegalArgumentException e) {
             System.out.println("Dados inválidos: " + e.getMessage());
+
         }
     }
 
+    static void removerPessoa (Scanner entrada, ArrayList < Pessoa > pessoas){
+        if (pessoas.isEmpty()) {
+            System.out.println("Nenhuma pessoa cadastrada.");
+                return;
+            }
 
-}
+            System.out.println("Quem você quer remover? (pelo número)");
+            for (int i = 0; i < pessoas.size(); i++) {
+                System.out.println((i + 1) + " - " + pessoas.get(i));
+            }
+
+            System.out.print("Número: ");
+            int numero = entrada.nextInt();
+            entrada.nextLine(); // limpa Enter
+
+            int indice = numero - 1;
+
+            if (indice < 0 || indice >= pessoas.size()) {
+                System.out.println("Número inválido.");
+                return;
+            }
+
+            Pessoa removida = pessoas.remove(indice);
+            System.out.println("Pessoa removida: " + removida);
+        }
+
+
+    }
